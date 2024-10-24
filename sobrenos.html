@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giggle Toys</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Corpo do Site */
+        body {
+            background-color: rgb(236, 237, 242);
+
+            font-family: 'Fredoka One', sans-serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            border: 2px solid #ff9900;
+            border-radius: 10px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #ff6f61 !important;
+        }
+
+        .nav-link {
+            color: #ff6f61 !important;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff9900 !important;
+        }
+
+        .navbar-toggler {
+            border: 2px solid #ff9900;
+            border-radius: 10px;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .navbar-brand video {
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .navbar .form-inline {
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-menu {
+            background-color: #f9f9f9;
+            /* Fundo branco */
+            border: 1px solid #ff9900;
+            /* Borda do dropdown */
+        }
+
+        .dropdown-item {
+            color: #ff6f61 !important;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #ff9900;
+            /* Fundo hover */
+            color: white !important;
+            /* Texto hover */
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid #ff9900;
+        }
+
+        /*Carrossel de Promoções */
+        .carousel-item {
+            padding: 10px;
+            height: 400px;
+            /* Altura do carrossel */
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Adiciona um fundo para melhor visibilidade */
+            padding: 10px;
+            /* Aumenta a área de clique */
+            border-radius: 50%;
+            /* Adiciona bordas arredondadas */
+        }
+
+        /* Carrossel */
+        .carousel-item {
+            height: 100vh;
+            min-height: 300px;
+            background: no-repeat center center scroll;
+            background-size: cover;
+            border: 2px solid #ff9900;
+            /* Adiciona uma borda de 2px */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            overflow: hidden;
+            /* Para garantir que os elementos não saiam da borda */
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Adiciona um fundo para melhor visibilidade */
+            padding: 10px;
+            /* Aumenta a área de clique */
+            border-radius: 50%;
+            /* Adiciona bordas arredondadas */
+        }
+
+        /* Sessão de Vídeo */
+        .video-section video {
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: #ff6f61;
+            text-align: left;
+            font-size: 1.5rem;
+            /* Aumenta o tamanho da fonte */
+        }
+
+        /* Brands Section */
+        .brand-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .brand-section h1 {
+            color: #ff6f61;
+            margin-bottom: 30px;
+        }
+
+        .brand-card {
+            background-color: transparent;
+            border-radius: 50px;
+            /* Torna o card oval */
+            overflow: hidden;
+            padding: 20px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+
+        .brand-card:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            /* Torna a imagem oval */
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .brand-card p {
+            color: #ff6f61;
+            font-weight: bold;
+            margin: 0;
+            margin-top: -10px;
+            /* Ajusta o espaço entre a imagem e o texto */
+        }
+
+        /* Títulos das Seções */
+        .section-title {
+            text-align: center;
+            color: #ff6f61;
+            font-size: 2.5rem;
+            margin-top: 50px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Cartões */
+        .card {
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            border-radius: 10px;
+        }
+
+        .card-title {
+            color: #ff6f61;
+            font-size: 1.5rem;
+        }
+
+        .card-text {
+            color: #6c757d;
+        }
+
+        /* Botões */
+        .btn-primary {
+            background-color: #ff6f61;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4f4f;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #f8f9fa;
+            border-top: 2px solid #ff9900;
+            color: #ff6f61 !important;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-link {
+            color: #ff6f61;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+            color: #ff9900;
+        }
+
+        .social-icons a {
+            color: #ff6f61;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #ff9900;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-warning">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./imgs/logo-animada-unscreen.gif" alt="Giggle Toys Logo" height="110px"
+                    class="d-inline-block align-text-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#brand-section">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#promos">Promoções</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="true">Categorias</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#bb-section">Para bebês</a></li>
+                            <li><a class="dropdown-item" href="#male-section">Meninos</a></li>
+                            <li><a class="dropdown-item" href="#fem-section">Meninas</a></li>
+                            <li><a class="dropdown-item" href="#promos">Black Friday</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><i class="fas fa-user-circle"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cadastro.html"><i class="fas fa-user-plus"></i> Cadastro</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seção Sobre Nós -->
+    <section class="py-5 bg-light" id="about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h1 class="section-title mb-5">Sobre Nós</h1>
+                    <h3 class="section-title mb-5">História da Giggle Toys: Uma Jornada de Brincadeira e Tecnologia</h3>
+                    <p class="lead">Em um distante ano de 2015, em um pequeno escritório no coração de uma metrópole
+                        pulsante, cinco mentes criativas uniram suas paixões pela tecnologia e pelo mundo infantil.
+                        Arthur, Henrique, Julia, Kauane e Roger, um grupo eclético de programadores e designers,
+                        buscavam algo mais do que apenas criar softwares e interfaces. Eles queriam construir algo que
+                        tocasse o coração das pessoas e, principalmente, das crianças.
+                        <br>
+                        <br>
+                        A ideia da Giggle Toys nasceu de longas noites de brainstorming e de uma profunda nostalgia pela
+                        infância. A equipe se lembrava da alegria que os brinquedos traziam, da imaginação que eles
+                        despertavam e do impacto que tinham na formação de cada um. Com essa inspiração, decidiram criar
+                        um espaço online onde as crianças pudessem encontrar brinquedos de alta qualidade, educativos e
+                        divertidos, e onde os pais pudessem encontrar presentes especiais para seus filhos.
+                        <br>
+                        <br>
+                        A Giggle Toys não era apenas uma loja virtual; era um projeto de paixão, um sonho transformado
+                        em realidade. A equipe trabalhou incansavelmente para criar uma experiência de compra única, com
+                        um site intuitivo, um catálogo de produtos diversificado e um atendimento ao cliente
+                        personalizado. A cada novo brinquedo adicionado à loja, a alegria da equipe aumentava, pois eles
+                        sabiam que estavam contribuindo para a felicidade de muitas crianças.
+                        <br>
+                        <br>
+                        Hoje, a Giggle Toys é muito mais do que uma loja de brinquedos. É uma comunidade de apaixonados
+                        por infância, um lugar onde a magia e a criatividade se encontram. E tudo isso começou com a
+                        amizade e a determinação de cinco amigos que acreditaram em um sonho em comum.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa Missão -->
+    <section class="py-5" id="mission">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="section-title mb-5">Nossa Missão</h2>
+                    <p class="lead">Despertar a alegria e a imaginação das crianças, proporcionando momentos de pura
+                        diversão através de brinquedos de alta qualidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa Visão -->
+    <section class="py-5 bg-light" id="vision">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="section-title mb-5">Nossa Visão</h2>
+                    <p class="lead">Ser a loja de brinquedos online mais querida do Brasil, oferecendo uma experiência
+                        de compra única e memorável para toda a família.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossos Valores -->
+    <section class="py-5" id="values">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="section-title mb-5">Nossos Valores</h2>
+                    <p class="lead"> Qualidade, inovação, segurança, atendimento personalizado e respeito ao cliente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suporte ao Cliente -->
+    <section class="py-5 bg-light" id="support">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="section-title mb-5">Suporte ao Cliente</h2>
+                    <p class="lead">Estamos aqui para te ajudar! Nossa equipe está sempre pronta para responder suas
+                        dúvidas e garantir sua satisfação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entrega Rápida -->
+    <section class="py-5" id="delivery">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="section-title mb-5">Entrega Rápida</h2>
+                    <p class="lead">Seus brinquedos favoritos chegam rapidinho na sua casa, para a alegria da criançada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Satisfação Garantida -->
+    <section class="py-5 bg-light" id="satisfaction">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2 class="section-title mb-5">Satisfação Garantida</h2>
+                    <p class="lead">Sua compra é 100% segura. Se você não gostar do produto, trocamos ou devolvemos seu
+                        dinheiro.</p>
+                </div>
+            </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="py-4">
+        <div class="container text-center">
+            <p class="mb-2">&copy; 2024 Giggle Toys. Todos os direitos reservados.</p>
+            <div>
+                <a href="./sobrenos.html" class="footer-link">Política de Privacidade</a>
+                |
+                <a href="./sobrenos.html" class="footer-link">Termos de Uso</a>
+                |
+                <a href="./contato.html" class="footer-link">Contato</a>
+                |
+                <a href="./sobrenós.html" class="footer-link">Sobre Nós</a>
+            </div>
+            <div class="social-icons mt-3">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</body>
+
+</html>
